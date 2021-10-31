@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="main.css">
+	<title>Navbar</title>
+</head>
+
+<body>
+	<nav>
+		<div class="logo">
+			ITSNP
+		</div>
+		<div class="menu-container" id="link-container">
+			<a href="#">Home
+				<span class="block"></span>
+			</a>
+			<a href="#">Gallery
+				<span class="block"></span>
+
+			</a>
+			<a href="#">Services
+				<span class="block"></span>
+
+			</a>
+			<a href="#">About&nbsp;Us
+				<span class="block"></span>
+
+			</a>
+		</div>
+		<div class="burger-container" id="menu-burger" onclick="showNav()">
+			<span class="burger b1"></span>
+			<span class="burger b2"></span>
+			<span class="burger b3"></span>
+		</div>
+	</nav>
+	<script>
+		let navOpen = false
+		const showNav = () => {
+			navOpen = !navOpen
+			const menu = document.getElementById('link-container')
+			const closeBtn = document.getElementById('menu-burger')
+			if (navOpen) {
+				menu.classList.add('show-menu')
+				closeBtn.classList.add('close')
+
+			} else {
+				menu.classList.remove('show-menu')
+				closeBtn.classList.remove('close')
+
+			}
+		}
+	</script>
+</body>
+
+</html>

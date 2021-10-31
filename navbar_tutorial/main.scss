@@ -1,0 +1,129 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito:200,200italic,300,300italic,regular,italic,600,600italic,700,700italic,800,800italic,900,900italic);
+$tab: 800px;
+$mobile: 600px;
+@mixin tab {
+  @media (max-width:#{$tab}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width:#{$mobile}) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+body {
+  min-height: 60vh;
+  width: 100%;
+  overflow-x: hidden;
+  max-width: 1440px;
+  background-image: url('https://cdn.pixabay.com/photo/2015/12/08/00/26/desk-1081708_960_720.jpg');
+  background-size: cover;
+  background-position: center;
+}
+nav {
+  height: 80px;
+  display: flex;
+  padding: 1rem 2rem;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.145);
+  backdrop-filter: blur(50px);
+  border-radius: 0 0 8px 8px;
+  .logo {
+    padding: 0.5rem;
+    font-weight: 800;
+    font-size: 2rem;
+    color: #fff;
+  }
+}
+.menu-container {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+  transition: all 0.3s ease-in-out;
+  a {
+    text-decoration: none;
+    color: #005dff;
+    padding: 0.5rem;
+    position: relative;
+    transition: all 0.4s ease-in-out;
+    z-index: 1;
+    .block {
+      position: absolute;
+      height: 100%;
+      background-color: #005dff;
+      left: 0;
+      width: 0;
+      top: 0;
+      transition: 0.2s;
+      z-index: -1;
+    }
+    &:hover {
+      transition: 0.2s;
+      color: #fff;
+      .block {
+        width: 100%;
+      }
+    }
+  }
+
+  @include tab() {
+    position: absolute;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgb(133, 133, 133);
+    justify-content: center;
+    align-items: center;
+    right: 0%;
+    top: 80px;
+    width: 40%;
+    transform: translateX(100%);
+    a {
+      color: #fff;
+    }
+  }
+  @include mobile() {
+    width: 100%;
+  }
+}
+.burger-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+  display: none;
+  margin-left: auto;
+  @include tab() {
+    display: flex;
+  }
+  .burger {
+    display: block;
+    height: 3px;
+    width: 30px;
+    background-color: #000;
+    transition: all 0.2s ease-in-out;
+  }
+}
+.close {
+  .b2 {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  .b1 {
+    transform: rotate(45deg) translateY(9px);
+  }
+  .b3 {
+    transform: rotate(-45deg) translateY(-9px);
+  }
+}
+.show-menu {
+  transform: translateX(0);
+}
